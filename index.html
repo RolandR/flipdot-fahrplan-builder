@@ -1,80 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html allowfullscreen>
 	<head>
 		<meta charset="utf-8" /> 
 		<title>
 			Flipdot Fahrplan builder
 		</title>
-		<style>
-		
-		</style>
+		<link rel="stylesheet" type="text/css" media="all" href="./css/style.css" /> 
 	</head>
 	<body>
 		<main id="main">
 			
 		</main>
 		<button id="request">request</button>
+		
+		<div id="flipdotsContainer">
+			
+		</div>
+		
+		
+		<script type="text/javascript" src="./js/draw.js"></script>
 	</body>
-	<script type="text/javascript">
-		
-		const button = document.getElementById("request");
-		const main = document.getElementById("main");
-		
-		button.addEventListener("click", function(e){
-			
-			
-			const request = new Request("https://fahrplan.events.ccc.de/congress/2025/fahrplan/schedules/fahrplan.json");
-			
-			fetch(request)
-				.then((response) => response.json())
-				.then((json) => {
-					
-					const days = json.schedule.conference.days;
-					
-					console.log(days);
-					
-					for(let day of days){
-						
-						let dayEl = document.createElement("div");
-						dayEl.innerHTML += "<h2>Day "+day.index+"</h2>";
-						
-						let rooms = [
-							"One",
-							"Zero",
-							"Ground",
-							"Fuse",
-						];
-						
-						for(let r of rooms){
-							
-							let room = day.rooms[r];
-							
-							let roomEl = document.createElement("div");
-							roomEl.innerHTML += "<h3>"+r+"</h3>";
-							
-							for(let talk of room){
-								
-								let talkEl = document.createElement("p");
-								talkEl.innerHTML = "<b>"+talk.start+"</b> ";
-								talkEl.innerHTML += talk.title;
-								
-								roomEl.appendChild(talkEl);
-								
-							}
-							
-							dayEl.appendChild(roomEl);
-							
-						}
-						
-						
-						main.appendChild(dayEl);
-						
-					}
-					
-					
-				});
-			
-		});
-		
-	</script>
 </html>
