@@ -65,6 +65,16 @@ function Painter(){
 			let chars = words[i].split("");
 			
 			for(let c in chars){
+				
+				if(charset[chars[c]] === undefined){
+					console.warn("Missing glyph: "
+						+chars[c]+" ("+chars[c].codePointAt(0)+" - "
+						+~~(chars[c].codePointAt(0)/16)+"x"
+						+(chars[c].codePointAt(0)%16)+")");
+					wordsInfo[i].text = wordsInfo[i].text.replace(chars[c], "?");
+					chars[c] = "?";
+				}
+				
 				wordsInfo[i].width += charset[chars[c]].width+1;
 			}
 			
@@ -83,8 +93,7 @@ function Painter(){
 		for(let i in words){
 			
 			if(wordsInfo[i].width > params.width){
-				console.warn("word is wider than flipdot!");
-				console.warn(words[i]);
+				console.warn("Word is wider than flipdot: "+words[i]);
 			}
 			
 			if(lines[currentLine].width == 0){
@@ -112,8 +121,6 @@ function Painter(){
 	function drawLines(lines, align){
 		
 		for(let l in lines){
-			
-			console.log(l, ~~(l/2)+1, flipdots.length);
 			
 			if(~~(l/2)+1 > flipdots.length){
 				console.warn("Text is too long!");
