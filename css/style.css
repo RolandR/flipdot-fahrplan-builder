@@ -22,3 +22,37 @@
 	image-rendering: pixelated;
 	display: none;
 }
+
+#fallblattContainer{
+	display: flex;
+	background-color: #26356e;
+	color: #fff;
+	font-family: sans-serif;
+	aspect-ratio: 5.8;
+	border: 10px #a63 solid;
+}
+
+#fallblattContainer>*{
+	container-type: size;
+	text-align: center;
+	border: 1px rgba(0, 0, 0, 0.5) solid;
+	line-height: 1.16;
+}
+
+@container (width > 0px){
+	#fallblattContainer>*>span {
+		font-size: calc(80cqh);
+	}
+}
+
+.fallblatt-uhr{
+	flex: 1.75;
+}
+
+.fallblatt-spacer{
+	flex: 0.5;
+}
+
+.fallblatt-char{
+	flex: 1;
+}

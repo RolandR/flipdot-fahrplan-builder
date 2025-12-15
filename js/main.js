@@ -14,27 +14,47 @@ async function main(){
 	
 	let talksIndex = 0;
 	
-	let eventTitle = talks[talksIndex].title;
-	
-	painter.setAndDraw(eventTitle, "center");
+	showEvent(talks[talksIndex]);
 
 	nextButton.addEventListener("click", function(e){
 		talksIndex++;
 		
-		let eventTitle = talks[talksIndex].title;
-	
-		painter.setAndDraw(eventTitle, "center");
+		showEvent(talks[talksIndex]);
 		
 	});
 	
 	prevButton.addEventListener("click", function(e){
-		talksIndex++;
+		talksIndex--;
 		
-		let eventTitle = talks[talksIndex].title;
-	
-		painter.setAndDraw(eventTitle, "center");
+		showEvent(talks[talksIndex]);
 		
 	});
+	
+	function showEvent(event){
+		
+		let eventTitle = event.title;
+		
+		console.log(event);
+		
+		painter.setAndDraw(eventTitle, "center");
+		let time = event.start.split(":");
+		
+		document.getElementById("uhr-h").innerHTML = time[0]+".";
+		document.getElementById("uhr-min").innerHTML = time[1];
+		
+		let room = event.room.toUpperCase();
+		room = room.split("");
+		
+		for(let i = 0; i < 6; i++){
+			
+			let el = document.getElementById("char"+i);
+			el.innerHTML = "";
+			
+			if(room[i]){
+				el.innerHTML = room[i];
+			}
+		}
+	}
 	
 	
 
