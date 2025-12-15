@@ -1,15 +1,23 @@
 
+*{
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+#flipdotsContainer{
+	padding: 10px;
+}
 
 .flipdotCanvas{
 	display: block;
-	margin: 10px;
 	image-rendering: pixelated;
-	height: 100px;
+	width: 100%;
 	border: 10px #000 solid;
+	margin: 2% 0px;
 }
 
 #charsetCanvas{
 	image-rendering: pixelated;
-	height: 500px;
 	display: none;
 }
