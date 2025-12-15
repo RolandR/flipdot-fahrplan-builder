@@ -1,58 +1,36 @@
-const button = document.getElementById("request");
-const main = document.getElementById("main");
 
-button.addEventListener("click", function(e){
-	
+async function requestFahrplan(){
 	
 	const request = new Request("https://fahrplan.events.ccc.de/congress/2025/fahrplan/schedules/fahrplan.json");
 	
-	fetch(request)
-	.then((response) => response.json())
-	.then((json) => {
+	let response = await fetch(request);
+	let json = await response.json();
+	
+	let days = json.schedule.conference.days;
+	
+	let talks = [];
+	
+	for(let day of days){
 		
-		const days = json.schedule.conference.days;
+		let rooms = [
+			"One",
+			"Zero",
+			"Ground",
+			"Fuse",
+		];
 		
-		console.log(days);
-		
-		for(let day of days){
+		for(let r of rooms){
 			
-			let dayEl = document.createElement("div");
-			dayEl.innerHTML += "<h2>Day "+day.index+"</h2>";
+			let room = day.rooms[r];
 			
-			let rooms = [
-				"One",
-				"Zero",
-				"Ground",
-				"Fuse",
-			];
-			
-			for(let r of rooms){
+			for(let talk of room){
 				
-				let room = day.rooms[r];
-				
-				let roomEl = document.createElement("div");
-				roomEl.innerHTML += "<h3>"+r+"</h3>";
-				
-				for(let talk of room){
-					
-					let talkEl = document.createElement("p");
-					talkEl.innerHTML = "<b>"+talk.start+"</b> ";
-					talkEl.innerHTML += talk.title;
-					
-					roomEl.appendChild(talkEl);
-					
-				}
-				
-				dayEl.appendChild(roomEl);
+				talks.push(talk);
 				
 			}
 			
-			
-			main.appendChild(dayEl);
-			
 		}
-		
-		
-	});
+	}
 	
-});
+	return talks;
+}
