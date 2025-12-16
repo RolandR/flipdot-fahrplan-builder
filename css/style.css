@@ -10,9 +10,13 @@
 	padding: 0px;
 }
 
-#flipdotsContainer{
+main{
 	padding: 10px;
 	max-width: 800px;
+}
+
+#flipdotsContainer{
+	
 }
 
 .flipdotCanvasContainer{
@@ -86,4 +90,31 @@
 
 .fallblatt-char{
 	flex: 1;
+}
+
+#titleTextArea{
+	width: 100%;
+	height: 100px;
+	margin-bottom: 20px;
+	font-size: 2em;
+	padding: 5px;
+}
+
+#buttonsContainer{
+	display: flex;
+	justify-content: center;
+}
+
+#buttonsContainer>*{
+	flex: 1;
+	max-width: 200px;
+	font-size: 1.3em;
+	margin: 0px 10px;
+	background-color: #444;
+	color: #fffc5a;
+	border: 1px #000 solid;
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 5px;
+}
 }

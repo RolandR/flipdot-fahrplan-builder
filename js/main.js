@@ -34,6 +34,8 @@ async function main(){
 		
 		let eventTitle = event.title;
 		
+		document.getElementById("titleTextArea").innerHTML = eventTitle;
+		
 		painter.setAndDraw(eventTitle, "center");
 		let time = event.start.split(":");
 		

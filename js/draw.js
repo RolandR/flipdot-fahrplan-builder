@@ -126,6 +126,10 @@ function Painter(){
 			}
 		}
 		
+		if(lines.length > flipdots.length*2){
+			console.warn("Text is too long:\n"+text);
+		}
+		
 		return lines;
 		
 	}
@@ -135,7 +139,6 @@ function Painter(){
 		for(let l in lines){
 			
 			if(~~(l/2)+1 > flipdots.length){
-				console.warn("Text is too long!");
 				return;
 			}
 			
