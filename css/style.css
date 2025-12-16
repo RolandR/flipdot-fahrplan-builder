@@ -1,4 +1,9 @@
 
+:root {
+	--flipdotWidth: 84;
+	--flipdotHeight: 16;
+}
+
 *{
 	box-sizing: border-box;
 	margin: 0px;
@@ -10,12 +15,38 @@
 	max-width: 800px;
 }
 
+.flipdotCanvasContainer{
+	width: 100%;
+	aspect-ratio: var(--flipdotWidth) / var(--flipdotHeight);
+	border: 10px #000 solid;
+	margin: 2% 0px;
+	position: relative;
+}
+
+.flipdotMask{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	/*background-image: url(../dotMask.png);
+	background-size: calc(100%/var(--flipdotWidth)) calc(100%/var(--flipdotHeight));
+	background-origin: content-box;
+	background-clip: content-box;*/
+	
+	/*
+		I tried tiling just one dot dynamically from the flipdot size variables,
+		as seen above, but that turned out to not be precise enough for some reason,
+		resulting in the grid not fitting the underlying pixels at certain sizes.
+	*/
+	background-image: url(../dotMask_84x16.png);
+	background-size: 100%;
+}
+
 .flipdotCanvas{
 	display: block;
 	image-rendering: pixelated;
 	width: 100%;
-	border: 10px #000 solid;
-	margin: 2% 0px;
 }
 
 #charsetCanvas{

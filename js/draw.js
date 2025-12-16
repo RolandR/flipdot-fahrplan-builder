@@ -22,13 +22,21 @@ function Painter(){
 				
 			};
 			
-			canvas = document.createElement("canvas");
+			let canvasContainer = document.createElement("div");
+			canvasContainer.className = "flipdotCanvasContainer";
+			
+			let dotMask = document.createElement("div");
+			dotMask.className = "flipdotMask";
+			
+			let canvas = document.createElement("canvas");
 			canvas.width = params.width;
 			canvas.height = params.height;
 			canvas.id = "canvas"+i;
 			canvas.className = "flipdotCanvas";
 			
-			flipdotsContainer.appendChild(canvas);
+			canvasContainer.appendChild(dotMask);
+			canvasContainer.appendChild(canvas);
+			flipdotsContainer.appendChild(canvasContainer);
 			
 			let context = canvas.getContext("2d");
 			
@@ -170,7 +178,7 @@ function Painter(){
 		for(let i in flipdots){
 			let context = flipdots[i].context;
 			context.fillStyle = "rgb(50, 50, 50)";
-			context.fillRect(0, 0, canvas.width, canvas.height);
+			context.fillRect(0, 0, flipdots[i].canvas.width, flipdots[i].canvas.height);
 		}
 	}
 
@@ -241,9 +249,9 @@ function Painter(){
 				
 				for(let i = 0; i < data.length; i += 4){
 					if(image.data[i+1] == 255){
-						data[i+0] = 210;
-						data[i+1] = 255;
-						data[i+2] = 0;
+						data[i+0] = 255;
+						data[i+1] = 252;
+						data[i+2] = 90;
 						data[i+3] = 255;
 					} else {
 						data[i+0] = 50;
