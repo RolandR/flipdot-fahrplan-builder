@@ -10,6 +10,8 @@ function Painter(){
 	};
 
 	const flipdotsContainer = document.getElementById("flipdotsContainer");
+	const errorsContainer = document.getElementById("errorsContainer");
+	
 	const charsetStartingCodepoints = [0, 8192];
 	let charset = {};
 	const flipdots = [];
@@ -79,10 +81,18 @@ function Painter(){
 			for(let c in chars){
 				
 				if(charset[chars[c]] === undefined){
-					console.warn("Missing glyph: "
+					let errorMsg = "Missing glyph: "
 						+chars[c]+" ("+chars[c].codePointAt(0)+" - "
 						+~~(chars[c].codePointAt(0)/16)+"x"
-						+(chars[c].codePointAt(0)%16)+")");
+						+(chars[c].codePointAt(0)%16)+")";
+					
+					console.warn(errorMsg);
+					
+					let errorEl = document.createElement("p");
+					errorEl.className = "error";
+					errorEl.innerHTML = errorMsg;
+					errorsContainer.appendChild(errorEl);
+					
 					wordsInfo[i].text = wordsInfo[i].text.replace(chars[c], "?");
 					chars[c] = "?";
 				}
@@ -105,7 +115,12 @@ function Painter(){
 		for(let i in words){
 			
 			if(wordsInfo[i].width > params.width){
-				console.warn("Word is wider than flipdot: "+words[i]);
+				let errorMsg = "Word is wider than flipdot: "+words[i];
+				console.warn(errorMsg);
+				let errorEl = document.createElement("p");
+				errorEl.className = "error";
+				errorEl.innerHTML = errorMsg;
+				errorsContainer.appendChild(errorEl);
 			}
 			
 			if(lines[currentLine].width == 0){
@@ -128,6 +143,12 @@ function Painter(){
 		
 		if(lines.length > flipdots.length*2){
 			console.warn("Text is too long:\n"+text);
+			
+			let errorMsg = "Text is too long!";
+			let errorEl = document.createElement("p");
+			errorEl.className = "error";
+			errorEl.innerHTML = errorMsg;
+			errorsContainer.appendChild(errorEl);
 		}
 		
 		return lines;
@@ -169,7 +190,7 @@ function Painter(){
 		let stringLength = 0;
 		for(let i in text){
 			if(charset[text[i]] === undefined){
-				console.warn("Missing glyph: "+text[i]);
+				console.error("Missing glyph: "+text[i]+" (this should not happen at this point)");
 				continue;
 			}
 			
@@ -182,6 +203,9 @@ function Painter(){
 	}
 	
 	function clear(){
+		
+		errorsContainer.innerHTML = "";
+		
 		for(let i in flipdots){
 			let context = flipdots[i].context;
 			context.fillStyle = "rgb(50, 50, 50)";
