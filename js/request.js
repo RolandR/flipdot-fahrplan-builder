@@ -32,5 +32,14 @@ async function requestFahrplan(){
 		}
 	}
 	
+	talks.sort(function(a, b){
+		
+		let dateA = new Date(a.date);
+		let dateB = new Date(b.date);
+		
+		return dateA - dateB;
+		
+	});
+	
 	return talks;
 }
