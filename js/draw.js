@@ -10,12 +10,16 @@ function Painter(){
 	};
 
 	const flipdotsContainer = document.getElementById("flipdotsContainer");
-	let charset;
+	const charsetStartingCodepoints = [0, 8192];
+	let charset = {};
 	const flipdots = [];
 
 	async function init(){
-
-		charset = await buildCharset();
+		
+		for(let c of charsetStartingCodepoints){
+			let page = await buildCharset(c); 
+			charset = Object.assign(charset, page);
+		}
 
 		for(let i = 0; i < params.flipdotsCount; i++){
 			let flipdot = {
@@ -182,16 +186,16 @@ function Painter(){
 		}
 	}
 
-	async function buildCharset(){
+	async function buildCharset(startingCodepoint){
 		
 		const charsetGridSize = 10;
 		const charHeight = 7;
 		
 		const charsetRowCount = 16;
 		const charsetColumnCount = 16;
-		const charsetStartingCodepoint = 32;
+		const charsetStartingCodepoint = startingCodepoint;
 		
-		const request = new Request("./charset-bold.png");
+		const request = new Request("./charset-bold-"+startingCodepoint+".png");
 		
 		let charsetImage;
 		
@@ -204,7 +208,7 @@ function Painter(){
 		charsetImage = await createImageBitmap(charsetImage);
 		
 		const charsetCanvas = document.createElement("canvas");
-		charsetCanvas.id = "charsetCanvas";
+		charsetCanvas.className = "charsetCanvas";
 		charsetCanvas.width = charsetImage.width;
 		charsetCanvas.height = charsetImage.height;
 		
@@ -219,6 +223,8 @@ function Painter(){
 		for(let y = 0; y < charsetRowCount; y++){
 			for(let x = 0; x < charsetColumnCount; x++){
 				
+				let symbol = String.fromCodePoint(codePoint);
+				
 				let widthProbe = charsetContext.getImageData(
 					x*charsetGridSize,
 					y*charsetGridSize+(charsetGridSize-2),
@@ -226,7 +232,7 @@ function Painter(){
 					1,
 				);
 				
-				let charWidth = 1;
+				let charWidth = 0;
 				
 				for(let i = 0; i < widthProbe.width*4; i += 4){
 					if(    widthProbe.data[i+0] == 255
@@ -236,6 +242,13 @@ function Painter(){
 						charWidth = ~~(i/4);
 						break;
 					}
+				}
+				
+				if(charWidth == 0){
+					// character is not defined
+					
+					codePoint++;
+					continue;
 				}
 				
 				let image = charsetContext.getImageData(
@@ -261,7 +274,7 @@ function Painter(){
 					}
 				}
 				
-				charset[String.fromCodePoint(codePoint)] = new ImageData(data, image.width, image.height);
+				charset[symbol] = new ImageData(data, image.width, image.height);
 				codePoint++;
 				
 			}
