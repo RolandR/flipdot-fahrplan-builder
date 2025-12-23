@@ -84,13 +84,16 @@ def setText(text, params):
 			if word["width"] > params["width"]:
 				print("Word is wider than flipdot: "+word["text"])
 			
-			if lines[currentLine] == 0:
+			if lines[currentLine]["width"] == 0:
 				lines[currentLine]["words"].append(word)
 				lines[currentLine]["width"] += word["width"]
+				
 			elif lines[currentLine]["width"] + (word["width"] + params["smallestWhitespace"]) <= params["width"]:
 				lines[currentLine]["words"].append(word)
 				lines[currentLine]["width"] += word["width"] + params["smallestWhitespace"]
+				
 			else:
+				
 				currentLine += 1
 				lines.append({
 					"words": [],
@@ -99,6 +102,7 @@ def setText(text, params):
 				
 				lines[currentLine]["words"].append(word)
 				lines[currentLine]["width"] += word["width"]
+				
 		
 		for line in lines:
 			line["text"] = ""
@@ -119,20 +123,41 @@ def setText(text, params):
 			image.paste(charset[char], (x, y))
 			x += charset[char].width + 1
 			
-	def drawLine(line, x, y, image, charset):
+	def drawLine(line, x, y, image, charset, space):
 		
 		for word in line["words"]:
 			drawText(word["text"], x, y, image, charset)
-			x += word["width"] + params["smallestWhitespace"]
+			x += word["width"] + space
 	
 	def drawLines(lines, flipdotImages, charset):
 		for i, line in enumerate(lines):
-			flipdot = math.floor(i/2)
-			flipdotLine = i % 2;
-			startX = math.floor(params["width"]/2 - line["width"]/2)
+			
+			if len(lines) > 3:
+				flipdot = math.floor(i/2)
+				yPos = 9*(i % 2)
+			else:
+				flipdot = i
+				yPos = 5
+			
+			additionalSpace = 0
+		
+			if(len(line["words"]) > 1):
+				additionalSpace = math.floor((params["width"] - line["width"])/(len(line["words"])-1))
+				additionalSpace = min(additionalSpace, params["largestWhitespace"]-params["smallestWhitespace"])
+				
+			totalAdditionalSpace = additionalSpace * (len(line["words"])-1)
+			
+			startX = math.floor(params["width"]/2 - (line["width"]+totalAdditionalSpace)/2)
 			
 			if(flipdot < len(flipdotImages)):
-				drawLine(line, startX, 9*flipdotLine, flipdotImages[flipdot], charset)
+				drawLine(
+					line,
+					startX,
+					yPos,
+					flipdotImages[flipdot],
+					charset,
+					params["smallestWhitespace"] + additionalSpace,
+				)
 			else:
 				print("Line won't fit:")
 				print('"{}"'.format(line["text"]))
@@ -140,7 +165,7 @@ def setText(text, params):
 	
 	def combineFlipdots(flipdotImages, flipdotsImage):
 		for i, image in enumerate(flipdotImages):
-			flipdotsImage.paste(image, (0, i*(params["height"]+flipdotsSpacing)))
+			flipdotsImage.paste(image, (flipdotsSpacing, i*(params["height"]+flipdotsSpacing)+flipdotsSpacing))
 	
 	flipdotImage = Image.new("1", (params["width"], params["height"]), 0)
 	
@@ -150,7 +175,11 @@ def setText(text, params):
 		flipdotImage.copy(),
 	]
 	
-	flipdotsImage = Image.new("1", (params["width"], (params["height"]+flipdotsSpacing)*params["flipdotsCount"]-flipdotsSpacing), 0)
+	flipdotsImage = Image.new(
+		"RGB",
+		(params["width"]+2*flipdotsSpacing, (params["height"]+flipdotsSpacing)*params["flipdotsCount"]+flipdotsSpacing),
+		0x444444
+	)
 	
 	charsetStartingCodepoints = [0, 8192]
 	charset = buildCharset(charsetStartingCodepoints)

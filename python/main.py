@@ -16,9 +16,10 @@ params = {
 	"height": 16,
 	"width": 84,
 	"smallestWhitespace": 3,
+	"largestWhitespace":8,
 }
 
-flipdots = connectFlipdots()
+#flipdots = connectFlipdots()
 
 def displayImage(image, serialConnection):
 	
@@ -46,14 +47,13 @@ def displayImage(image, serialConnection):
 	except Exception as error:
 		print("nope: ", error)
 
-setImage = setText("OpenAutoLab: photographic film processing machine. Fully automatic and DIY-friendly.", params)
+#setImage = setText("OpenAutoLab: photographic film processing machine. Fully automatic and DIY-friendly.", params)
+#setImage = setText("Building hardware - easier than ever - harder than it should be", params)
+#setImage = setText("Demystifying Fuzzer Behaviour", params)
+#setImage = setText("Liberating Bluetooth on the ESP32", params)
+#setImage = setText("Opening Ceremony", params)
+setImage = setText("Developing New Medicines in the Age of AI and Personalized Medicine", params)
+#setImage = setText("A B", params)
+
+
 setImage.save("outputImage.png")
-
-#setImage = setText("   I mean, the", params)
-#displayImage(setImage, flipdots["Flipdot 0"])
-
-#setImage = setText("   rest is just", params)
-#displayImage(setImage, flipdots["Flipdot 1"])
-
-#setImage = setText("Software, right?", params)
-#displayImage(setImage, flipdots["Flipdot 2"])
