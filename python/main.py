@@ -103,30 +103,44 @@ def showTalk(talk):
 	fallblattShowTalk(talk)
 	
 	flipdotImages = setText(talk["title"], params)
-
-	displayImage(flipdotImages[0], flipdots["Flipdot 0"])
+	
+	fill(flipdots["Flipdot 0"])
 	time.sleep(sleepytime)
-
-	displayImage(flipdotImages[1], flipdots["Flipdot 1"])
+	fill(flipdots["Flipdot 1"])
 	time.sleep(sleepytime)
-
-	displayImage(flipdotImages[2], flipdots["Flipdot 2"])
+	fill(flipdots["Flipdot 2"])
 	time.sleep(sleepytime)
 	
-	displayImage(flipdotImages[0], flipdots["Flipdot 0"])
+	clear(flipdots["Flipdot 0"])
+	time.sleep(sleepytime)
+	clear(flipdots["Flipdot 1"])
+	time.sleep(sleepytime)
+	clear(flipdots["Flipdot 2"])
 	time.sleep(sleepytime)
 
-	displayImage(flipdotImages[1], flipdots["Flipdot 1"])
-	time.sleep(sleepytime)
+	#displayImage(flipdotImages[0], flipdots["Flipdot 0"])
+	#time.sleep(sleepytime)
 
-	displayImage(flipdotImages[2], flipdots["Flipdot 2"])
-	time.sleep(sleepytime)
+	#displayImage(flipdotImages[1], flipdots["Flipdot 1"])
+	#time.sleep(sleepytime)
+
+	#displayImage(flipdotImages[2], flipdots["Flipdot 2"])
+	#time.sleep(sleepytime)
+	
+	#displayImage(flipdotImages[0], flipdots["Flipdot 0"])
+	#time.sleep(sleepytime)
+
+	#displayImage(flipdotImages[1], flipdots["Flipdot 1"])
+	#time.sleep(sleepytime)
+
+	#displayImage(flipdotImages[2], flipdots["Flipdot 2"])
+	#time.sleep(sleepytime)
 	
 	
 
 def fahrplanLoop():
 	
-	switchTime = 15
+	switchTime = 5
 	
 	while True:
 		nextTalks = fahrplan.getTalks()
