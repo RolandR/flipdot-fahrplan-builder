@@ -107,16 +107,19 @@ def showTalk(talk):
 
 	displayImage(flipdotImages[0], flipdots["Flipdot 0"])
 	time.sleep(sleepytime)
+
+	displayImage(flipdotImages[1], flipdots["Flipdot 1"])
+	time.sleep(sleepytime)
+
+	displayImage(flipdotImages[2], flipdots["Flipdot 2"])
+	time.sleep(sleepytime)
+	
 	displayImage(flipdotImages[0], flipdots["Flipdot 0"])
 	time.sleep(fastSleepyTime)
 
 	displayImage(flipdotImages[1], flipdots["Flipdot 1"])
-	time.sleep(sleepytime)
-	displayImage(flipdotImages[1], flipdots["Flipdot 1"])
 	time.sleep(fastSleepyTime)
 
-	displayImage(flipdotImages[2], flipdots["Flipdot 2"])
-	time.sleep(sleepytime)
 	displayImage(flipdotImages[2], flipdots["Flipdot 2"])
 	time.sleep(fastSleepyTime)
 	
