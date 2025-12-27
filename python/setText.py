@@ -190,5 +190,7 @@ def setText(text, params):
 	
 	combineFlipdots(flipdotImages, flipdotsImage)
 	
-	return flipdotsImage
+	flipdotsImage.save("outputImage.png")
+	
+	return flipdotImages
 	

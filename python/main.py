@@ -10,6 +10,11 @@ from PIL import Image
 
 from setText import *
 from connect import *
+import fahrplan
+
+sys.path.insert(1, './fallblatt')
+
+from showTalk import showTalk as fallblattShowTalk
 
 params = {
 	"flipdotsCount": 3,
@@ -19,7 +24,7 @@ params = {
 	"largestWhitespace":8,
 }
 
-#flipdots = connectFlipdots()
+flipdots = connectFlipdots()
 
 def displayImage(image, serialConnection):
 	
@@ -46,14 +51,98 @@ def displayImage(image, serialConnection):
 		serialConnection.close()
 	except Exception as error:
 		print("nope: ", error)
+		
+def clear(serialConnection):
+	
+	height = params["height"]
+	width = params["width"]
 
-#setImage = setText("OpenAutoLab: photographic film processing machine. Fully automatic and DIY-friendly.", params)
-#setImage = setText("Building hardware - easier than ever - harder than it should be", params)
-#setImage = setText("Demystifying Fuzzer Behaviour", params)
-#setImage = setText("Liberating Bluetooth on the ESP32", params)
-#setImage = setText("Opening Ceremony", params)
-setImage = setText("Developing New Medicines in the Age of AI and Personalized Medicine", params)
-#setImage = setText("A B", params)
+	bufferWidth = int((width+7)/8)
+	bufferSize = bufferWidth*height
+	
+	displayData = bytearray(bufferSize)
+	
+	for y in range(height):
+		for xByte in range(bufferWidth):
+			displayData[y*bufferWidth+(xByte)] = 0;
+
+	try:
+		serialConnection.open()
+		serialConnection.write(displayData)
+		serialConnection.close()
+	except Exception as error:
+		print("nope: ", error)
 
 
-setImage.save("outputImage.png")
+def fill(serialConnection):
+	
+	height = params["height"]
+	width = params["width"]
+
+	bufferWidth = int((width+7)/8)
+	bufferSize = bufferWidth*height
+	
+	displayData = bytearray(bufferSize)
+	
+	for y in range(height):
+		for xByte in range(bufferWidth):
+			displayData[y*bufferWidth+(xByte)] = 255;
+
+	try:
+		serialConnection.open()
+		serialConnection.write(displayData)
+		serialConnection.close()
+	except Exception as error:
+		print("nope: ", error)
+		
+
+def showTalk(talk):
+
+	sleepytime = 0.5
+	
+	fallblattShowTalk(talk)
+	
+	flipdotImages = setText(talk["title"], params)
+
+	displayImage(flipdotImages[0], flipdots["Flipdot 0"])
+	time.sleep(sleepytime)
+
+	displayImage(flipdotImages[1], flipdots["Flipdot 1"])
+	time.sleep(sleepytime)
+
+	displayImage(flipdotImages[2], flipdots["Flipdot 2"])
+	time.sleep(sleepytime)
+	
+	displayImage(flipdotImages[0], flipdots["Flipdot 0"])
+	time.sleep(sleepytime)
+
+	displayImage(flipdotImages[1], flipdots["Flipdot 1"])
+	time.sleep(sleepytime)
+
+	displayImage(flipdotImages[2], flipdots["Flipdot 2"])
+	time.sleep(sleepytime)
+	
+	
+
+def fahrplanLoop():
+	
+	switchTime = 15
+	
+	while True:
+		nextTalks = fahrplan.getTalks()
+		
+		fallblattShowTalk(nextTalks[0])
+		
+		showTalk(nextTalks[0])
+		time.sleep(switchTime)
+		
+		showTalk(nextTalks[1])
+		time.sleep(switchTime)
+		
+		showTalk(nextTalks[2])
+		time.sleep(switchTime)
+		
+		showTalk(nextTalks[3])
+		time.sleep(switchTime)
+
+fahrplanLoop()
