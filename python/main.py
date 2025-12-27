@@ -99,7 +99,7 @@ def fill(serialConnection):
 def showTalk(talk):
 
 	sleepytime = 0.5
-	fastSleepyTime = 0.1
+	fastSleepyTime = 0.2
 	
 	fallblattShowTalk(talk)
 	
