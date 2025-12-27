@@ -140,7 +140,7 @@ def showTalk(talk):
 
 def fahrplanLoop():
 	
-	switchTime = 10
+	switchTime = 7
 	
 	while True:
 		nextTalks = fahrplan.getTalks()
