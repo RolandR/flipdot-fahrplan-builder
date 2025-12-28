@@ -125,7 +125,7 @@ def showTalk(talk, endTime):
 	displayImage(flipdotImages[2], flipdots["Flipdot 2"])
 	time.sleep(sleepytime)
 	
-	keepAlive(endTime)
+	keepAlive(endTime, flipdotImages, flipdots)
 	
 	#fill(flipdots["Flipdot 0"])
 	#time.sleep(sleepytime)
@@ -140,7 +140,7 @@ def showTalk(talk, endTime):
 	#clear(flipdots["Flipdot 2"])
 	#time.sleep(sleepytime)
 	
-def keepAlive(endTime):
+def keepAlive(endTime, flipdotImages, flipdots):
 	
 	fastSleepyTime = 0.2
 	delayTime = 0.8
