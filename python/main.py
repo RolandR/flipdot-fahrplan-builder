@@ -4,6 +4,7 @@ import os
 import sys
 import math
 import time
+from datetime import datetime, timedelta
 import warnings
 import serial
 from PIL import Image
@@ -99,10 +100,9 @@ def fill(serialConnection):
 		print("nope: ", error)
 		
 
-def showTalk(talk):
+def showTalk(talk, endTime):
 
 	sleepytime = 0.5
-	fastSleepyTime = 0.2
 	
 	title = talk["title"]
 	guid = talk["guid"]
@@ -125,14 +125,7 @@ def showTalk(talk):
 	displayImage(flipdotImages[2], flipdots["Flipdot 2"])
 	time.sleep(sleepytime)
 	
-	displayImage(flipdotImages[0], flipdots["Flipdot 0"])
-	time.sleep(fastSleepyTime)
-
-	displayImage(flipdotImages[1], flipdots["Flipdot 1"])
-	time.sleep(fastSleepyTime)
-
-	displayImage(flipdotImages[2], flipdots["Flipdot 2"])
-	time.sleep(fastSleepyTime)
+	keepAlive(endTime)
 	
 	#fill(flipdots["Flipdot 0"])
 	#time.sleep(sleepytime)
@@ -147,7 +140,26 @@ def showTalk(talk):
 	#clear(flipdots["Flipdot 2"])
 	#time.sleep(sleepytime)
 	
+def keepAlive(endTime):
 	
+	fastSleepyTime = 0.2
+	delayTime = 0.8
+	
+	while True:
+		
+		displayImage(flipdotImages[0], flipdots["Flipdot 0"])
+		time.sleep(fastSleepyTime)
+
+		displayImage(flipdotImages[1], flipdots["Flipdot 1"])
+		time.sleep(fastSleepyTime)
+
+		displayImage(flipdotImages[2], flipdots["Flipdot 2"])
+		
+		now = datetime.now().astimezone()
+		if now >= endTime:
+			return 0
+		
+		time.sleep(delayTime)
 
 def fahrplanLoop():
 	
@@ -156,17 +168,10 @@ def fahrplanLoop():
 	while True:
 		nextTalks = fahrplan.getTalks()
 		
-		showTalk(nextTalks[0])
-		time.sleep(switchTime)
-		
-		showTalk(nextTalks[1])
-		time.sleep(switchTime)
-		
-		showTalk(nextTalks[2])
-		time.sleep(switchTime)
-		
-		showTalk(nextTalks[3])
-		time.sleep(switchTime)
+		for i in range(3):
+			
+			endTime = datetime.now().astimezone() + timedelta(seconds=switchTime)
+			showTalk(nextTalks[i], endTime)
 
 
 replacementsFile = open("replacements.json")
