@@ -102,7 +102,7 @@ def fill(serialConnection):
 
 def showTalk(talk, endTime):
 
-	sleepytime = 0.5
+	sleepytime = 0.3
 	
 	title = talk["title"]
 	guid = talk["guid"]
