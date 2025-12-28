@@ -168,7 +168,7 @@ def fahrplanLoop():
 	while True:
 		nextTalks = fahrplan.getTalks()
 		
-		for i in range(3):
+		for i in range(4):
 			
 			endTime = datetime.now().astimezone() + timedelta(seconds=switchTime)
 			showTalk(nextTalks[i], endTime)
