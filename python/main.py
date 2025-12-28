@@ -7,6 +7,7 @@ import time
 import warnings
 import serial
 from PIL import Image
+import json
 
 from setText import *
 from connect import *
@@ -25,6 +26,8 @@ params = {
 }
 
 flipdots = connectFlipdots()
+
+replacements = {}
 
 def displayImage(image, serialConnection):
 	
@@ -101,9 +104,17 @@ def showTalk(talk):
 	sleepytime = 0.5
 	fastSleepyTime = 0.2
 	
-	fallblattShowTalk(talk)
+	title = talk["title"]
+	guid = talk["guid"]
 	
-	flipdotImages = setText(talk["title"], params)
+	if guid in replacements:
+		title = replacements[guid]["newTitle"]
+	
+	flipdotImages = setText(title, params)
+	
+	#return 0
+	
+	fallblattShowTalk(talk)
 
 	displayImage(flipdotImages[0], flipdots["Flipdot 0"])
 	time.sleep(sleepytime)
@@ -145,8 +156,6 @@ def fahrplanLoop():
 	while True:
 		nextTalks = fahrplan.getTalks()
 		
-		fallblattShowTalk(nextTalks[0])
-		
 		showTalk(nextTalks[0])
 		time.sleep(switchTime)
 		
@@ -158,5 +167,9 @@ def fahrplanLoop():
 		
 		showTalk(nextTalks[3])
 		time.sleep(switchTime)
+
+
+replacementsFile = open("replacements.json")
+replacements = json.loads(replacementsFile.read())
 
 fahrplanLoop()

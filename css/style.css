@@ -10,13 +10,35 @@
 	padding: 0px;
 }
 
+html, body{
+	height: 100%;
+}
+
 body{
 	font-family: sans-serif;
 }
 
+#mainContainer{
+	display: flex;
+	height: 100%;
+}
+
 main{
 	padding: 10px;
-	max-width: 800px;
+	max-width: 700px;
+	flex: 1;
+}
+
+#replacement{
+	flex: 1;
+	padding: 10px;
+}
+
+#replacementCode{
+	font-size: 18px;
+	padding: 10px;
+	width: 100%;
+	height: 100%;
 }
 
 #flipdotsContainer{

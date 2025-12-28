@@ -7,7 +7,10 @@ async function main(){
 	const nextButton = document.getElementById("nextButton");
 	const prevButton = document.getElementById("prevButton");
 	const mainEl = document.getElementById("main");
+	const titleTextArea = document.getElementById("titleTextArea");
+	const replacementCodeEl = document.getElementById("replacementCode");
 	
+	let currentEvent;
 	
 	await painter.init();
 	let talks = await requestFahrplan();
@@ -30,11 +33,30 @@ async function main(){
 		
 	});
 	
+	titleTextArea.addEventListener("input", function(e){
+		
+		const newTitle = titleTextArea.value;
+		
+		let replacementJson = {};
+		
+		replacementJson[currentEvent.guid] = {};
+		replacementJson[currentEvent.guid].newTitle = newTitle;
+		replacementCodeEl.innerHTML = JSON.stringify(replacementJson, null, "\t");
+		
+		currentEvent.newTitle = newTitle;
+		showEvent(currentEvent);
+	});
+	
 	function showEvent(event){
 		
+		currentEvent = event;
 		let eventTitle = event.title;
 		
-		document.getElementById("titleTextArea").innerHTML = eventTitle;
+		if(event.newTitle){
+			eventTitle = event.newTitle;
+		}
+		
+		titleTextArea.value = eventTitle;
 		
 		painter.setAndDraw(eventTitle, "center");
 		let time = event.start.split(":");
