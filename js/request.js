@@ -1,7 +1,7 @@
 
 async function requestFahrplan(){
 	
-	const request = new Request("https://fahrplan.events.ccc.de/congress/2025/fahrplan/schedules/fahrplan.json");
+	const request = new Request("https://cfp.winterkongress.ch/wk26/schedule/export/schedule.json");
 	
 	let response = await fetch(request);
 	let json = await response.json();
@@ -13,10 +13,9 @@ async function requestFahrplan(){
 	for(let day of days){
 		
 		let rooms = [
-			"One",
-			"Zero",
-			"Ground",
-			"Fuse",
+			"Aktionshalle",
+			"Clubraum",
+			"Fabriktheater",
 		];
 		
 		for(let r of rooms){

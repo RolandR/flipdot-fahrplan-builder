@@ -1,110 +1,23 @@
 {
-	"6022aa96-3706-5910-9fd1-dfe882a4c473": {
-		"newTitle": "Junghacker- :innentag Einführung"
+	"3075f271-d8d1-539b-99b5-6a59a9f6f640": {
+		"newTitle": "Digitale Sou- veränität jetzt: Wie FOSS unser unterschätztes Schutzsystem ist"
 	},
-	"a19d5bca-7949-5353-abaf-1c43655f7c26": {
-		"newTitle": "Protecting the network data of a billion people: Breaking crypto in popular Chinese apps"
+	"227c0802-d2a7-513f-b83a-cf0a91285ffe": {
+		"newTitle": "Digitale Souveränität vs. kollektive Sicherheit: Orientierungs- punkte"
 	},
-	"e6837a00-672c-532b-9bfa-319453667c03": {
-		"newTitle": "Skynet Starter Kit: From AI Jailbreak to Remote Take- over of Humanoid Robots"
+	"07413c81-c06c-5269-9ebd-5fc988c344e2": {
+		"newTitle": "Verwendung von US- Cloudanbietern durch Kantone: Die rechtliche Sicht"
 	},
-	"8ba2a160-c00d-56c4-a84e-afb1536bc48b": {
-		"newTitle": "Neue Chaos-Events InselChaos und Håck ma's Castle plaudern aus'm Nähkästchen"
+	"b6e38544-a7ce-5376-933a-357bd225e373": {
+		"newTitle": "Werbebudgets finanzieren unsere Mani- pulation auf Tech- Plattformen"
 	},
-	"c9f5a6df-6c79-5492-b3e0-110347358445": {
-		"newTitle": "A post-American, enshittification- resistant internet"
+	"86ab2eb5-0213-56c7-82d2-393d18df5f30": {
+		"newTitle": "Open-Access- Repositorien als Erfolgs- geschichte?"
 	},
-	"f33636a7-e2a3-5925-87e3-1ba270e73ff5": {
-		"newTitle": "selbst- verständlich antifaschistisch - Zum Verfahren im Budapest- Komplex"
+	"457cb54e-f72f-5b03-a2f3-f0886ff8ce6e": {
+		"newTitle": "\"Ah\", \"Oh\" und \"Ui\" aus der Welt der Quanten- computer"
 	},
-	"656a3c17-8cd8-516f-bf31-645c98af7990": {
-		"newTitle": "Chaos Communication Chemistry: DNA security based on molecular randomness"
+	"69e782ae-f791-5faf-8915-bc7a35d6d464": {
+		"newTitle": "                 42.                 Das Jubiläums- Quiz für Nerds"
 	},
-	"49b35210-41ea-547d-86da-1ca62612c7b6": {
-		"newTitle": "CCC Jahresrückblick"
-	},
-	"0c6e2d25-7014-5aaf-9c6a-b4347f0ff85c": {
-		"newTitle": "Lessons from Building an Open- Architecture Secure Element"
-	},
-	"0425efd8-fec5-5dbc-860b-8478857dc9ac": {
-		"newTitle": "Auf die Dauer hilft nur Power:  Dezentrale Netzwerke aus Sicht der Soziologie"
-	},
-	"7557e54c-89e9-530d-aafb-8736570661d4": {
-		"newTitle": "Amtsgeheimnis raus, Datenhalde rein: was die Informations- freiheit in Österreich bringt"
-	},
-	"d08f6f41-a731-57f7-ba40-8f38464f2dcd": {
-		"newTitle": "Prometheus: Reverse- Engineering Overwatch"
-	},
-	"f3ecee56-19f5-5c45-b5ec-799f710e0388": {
-		"newTitle": "Trump govt demands access to European police databases and biometrics"
-	},
-	"6a747cc1-1320-5027-b7f9-050a6f3b2134": {
-		"newTitle": "Verlorene Domains, offene Türen - Was alte Behörden- domains verraten"
-	},
-	"1511188c-92ca-5002-b411-591b5f848e14": {
-		"newTitle": "Wie wir alte Flipper- automaten am Leben erhalten"
-	},
-	"da752c1f-1231-5039-a2a9-9daa2f114606": {
-		"newTitle": "51 Ways to Spell the Image Giraffe: Hidden Politics of Token Languages in Generative AI"
-	},
-	"9c8bec33-f71a-5090-857d-1648a027c8a9": {
-		"newTitle": "GPTDash – Der Reverse- Turing-Test"
-	},
-	"8a09918c-9b59-53b2-ab8e-4f2cfdb460d5": {
-		"newTitle": "a media-almost- archaeology on data that is too dirty for \"AI\""
-	},
-	"4914b889-5003-561f-90a8-5371fc09a946": {
-		"newTitle": "What Makes Bike-Sharing Work? Insights from 43 Million km of European Cycling Data"
-	},
-	"94c5aafc-0742-500b-92bd-ca6f2ceb37a1": {
-		"newTitle": "Wer hat Angst vor dem Neutralitäts- gebot?"
-	},
-	"e5377df9-07f4-5c8c-b510-8f64e58d95e3": {
-		"newTitle": "Supplements und Social Media – wenn der Online-Hype zur Gesundheits- gefahr wird"
-	},
-	"b98918cb-489e-5f5e-aa06-26753cb48418": {
-		"newTitle": "Making the Magic Leap past NVIDIA's secure bootchain and breaking some Tesla Autopilots"
-	},
-	"7f6e6dff-5f85-5c03-8f07-373b3acce367": {
-		"newTitle": "Programmierte Kriegs- verbrechen? Über KI-Systeme im Kriegseinsatz in Gaza"
-	},
-	"755f1d78-c910-56cb-a37e-13870013bff6": {
-		"newTitle": "Gegenmacht — Best of Informations- freiheit"
-	},
-	"75dadf9f-5f43-5cc5-b344-b0d402af7092": {
-		"newTitle": "Von wegen Eisblumen! Die bunte Welt des arktischen Phytoplanktons"
-	},
-	"fa59ce23-205c-5cd9-a7de-8ba768e3bf3f": {
-		"newTitle": "Aber hier Leben? Nein danke! …oder doch? Wie wir der autoritär- en Zuspitzung begegnen können"
-	},
-	"f894f246-6bd4-5750-a66b-d073e37b7acd": {
-		"newTitle": "Human micro- services at the Dutch Railways: modern archi- tecture, ancient hardware?"
-	},
-	"ad9fa823-820f-5846-825e-42e2b5934ef6": {
-		"newTitle": "Peep-Show für die Polizei. Überwachung von Queers in Hamburger Toi- letten bis 1980"
-	},
-	"11ede3bc-662b-580b-9ecb-e84edabee369": {
-		"newTitle": "Von Fuzzern zu Agenten: Entwicklung eines Cyber Rea- soning Systems für die AIxCC"
-	},
-	"f1e6f4e2-875f-573c-9e68-8dfd52e29225": {
-		"newTitle": "Spectre in the real world: Leak- ing your private data from the cloud with CPU vulnerabilities"
-	},
-	"4972548a-618e-56a1-8328-3abe474a31ab": {
-		"newTitle": "Verschlüsselung brechen durch physischen Zugriff — Phone Beschlagnahme durch Polizei"
-	},
-	"c43046a1-bac9-54d3-a551-d86630e7ab3b": {
-		"newTitle": "I Hated All The Cross-Stitch Software So I Made My Own"
-	},
-	"910e5f22-945b-5196-8e21-246acbcaadd3": {
-		"newTitle": "“End Of 10”: How FOSS is Fighting Software-Driven Resource and Energy Consumption"
-	},
-	"7fe75d23-5966-5dca-a736-e7664a475be3": {
-		"newTitle": "Lightning Talks - Tag    :3"
-	},
-	"8ddb3a95-bce6-56a7-89f6-d2d50d084e9f": {
-		"newTitle": "Laser Beams & Light Streams: Letting Hackers Go Pew Pew, Light-Based HW Security Tooling"
-	},
-	"d397c338-c631-5a03-a335-e3043d49188c": {
-		"newTitle": "We, the EU, and 1064 Danes decided to look into YouTube"
-	}
 }

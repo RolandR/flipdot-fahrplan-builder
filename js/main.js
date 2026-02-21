@@ -64,7 +64,17 @@ async function main(){
 		document.getElementById("uhr-h").innerHTML = time[0]+".";
 		document.getElementById("uhr-min").innerHTML = time[1];
 		
-		let room = event.room.toUpperCase();
+		let room = event.room;
+		
+		if(room == "Aktionshalle"){
+			room = "Halle";
+		} else if(room == "Clubraum"){
+			room = "Club-R";
+		} else if(room == "Fabriktheater"){
+			room = "Fabrik";
+		}
+		
+		room = room.toUpperCase();
 		room = room.split("");
 		
 		for(let i = 0; i < 6; i++){
