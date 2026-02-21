@@ -12,7 +12,7 @@ fahrplan = None
 
 def updateFahrplan():		
 	
-	requestUrl = "https://fahrplan.events.ccc.de/congress/2025/fahrplan/schedules/fahrplan.json"
+	requestUrl = "https://cfp.winterkongress.ch/wk26/schedule/export/schedule.json"
 	
 	resp = requests.get(url=requestUrl, timeout=5)
 	
@@ -28,10 +28,9 @@ def updateFahrplan():
 	for day in days:
 		
 		rooms = [
-			"One",
-			"Zero",
-			"Ground",
-			"Fuse",
+			"Aktionshalle",
+			"Clubraum",
+			"Fabriktheater"
 		];
 		
 		for roomName in rooms:

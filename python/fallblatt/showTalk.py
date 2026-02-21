@@ -14,6 +14,14 @@ def showTalk(talk):
 
 	text = talk["room"]
 	talkTime = parse(talk["date"])
+	
+	if text == "Aktionshalle":
+		text = "HALLE "
+	elif text == "Clubraum":
+		text = "CLUB-R"
+	elif text == "Fabriktheater":
+		text = "FABRIK"
+	
 
 	addrs = list(range(1, 6 + 1))
 	cc = sbb_rs485.PanelAlphanumControl(addresses=addrs, port=port)
